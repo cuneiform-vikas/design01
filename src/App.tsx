@@ -1,14 +1,19 @@
 import SplitScreens from "./components/SplitScreens";
 
-const LeftComponent = () => {
-  return <div style={{backgroundColor:"darkgoldenrod"}}>left</div>;
+const LeftComponent = ({ name }: { name: string }) => {
+  return <>{name}</>;
 };
-const RightComponent = () => {
-  return <div style={{backgroundColor:"lavender"}}>right</div>;
+const RightComponent = ({ message }: { message: string }) => {
+  return <>{message}</>;
 };
 
 const App = () => {
-  return <SplitScreens left={LeftComponent} right={RightComponent} />;
+  return (
+    <SplitScreens leftWeight={1} rightWeight={3}>
+      <LeftComponent name="sidebar" />
+      <RightComponent message="main content" />
+    </SplitScreens>
+  );
 };
 
 export default App;

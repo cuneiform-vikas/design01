@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { splitComponents } from "../types";
+import { SplitScreen, StyledBoxProps } from "../types";
 
 const Container = styled.div`
   display: flex;
@@ -7,19 +7,22 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const Box = styled.div`
-  flex: 1;
+const Box = styled.div<StyledBoxProps>`
+  flex: ${(props) => props.weight};
+  background:${(props) => props.color};
 `;
 
-const SplitScreens = ({ left: Left, right: Right }: splitComponents) => {
+const SplitScreens = ({
+  children,
+  leftWeight = 1,
+  rightWeight = 1,
+}: SplitScreen) => {
+  const [left, right]: any = children;
+
   return (
     <Container>
-      <Box>
-        <Left />
-      </Box>
-      <Box>
-        <Right />
-      </Box>
+      <Box color="lightpink" weight={leftWeight}>{left}</Box>
+      <Box color="antiquewhite" weight={rightWeight}>{right}</Box>
     </Container>
   );
 };

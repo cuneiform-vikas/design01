@@ -1,4 +1,9 @@
-export interface splitComponents {
-  left: any;
-  right: any;
+export interface SplitScreen {
+  children: React.ReactNode;
+  leftWeight?: number;
+  rightWeight?: number;
+}
+
+export interface StyledBoxProps {
+  weight?: number;
 }
